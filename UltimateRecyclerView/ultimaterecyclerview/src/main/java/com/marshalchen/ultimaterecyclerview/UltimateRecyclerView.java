@@ -284,7 +284,7 @@ public class UltimateRecyclerView extends FrameLayout {
             }
         };
         mRecyclerView.setOnScrollListener(mOnScrollListener);
-        if (mAdapter.getCustomLoadMoreView() == null)
+        if (mAdapter != null && mAdapter.getCustomLoadMoreView() == null)
             mAdapter.setCustomLoadMoreView(LayoutInflater.from(getContext())
                     .inflate(R.layout.bottom_progressbar, null));
     }
