@@ -31,8 +31,6 @@ import com.marshalchen.ultimaterecyclerview.ui.floatingactionbutton.FloatingActi
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
-
 /**
  * UltimateRecyclerView is a recyclerview which contains the function of swipe to dismiss,animations,drag drop etc.
  */
@@ -67,6 +65,7 @@ public class UltimateRecyclerView extends FrameLayout {
     private boolean mFirstScroll;
     private boolean mDragging;
     private boolean mIntercepted;
+    private boolean mLoadMore;
 
 
     protected ViewStub mEmpty;
@@ -219,6 +218,7 @@ public class UltimateRecyclerView extends FrameLayout {
      * Enable loading more of the recyclerview
      */
     public void enableLoadmore() {
+        mLoadMore = true;
         mOnScrollListener = new RecyclerView.OnScrollListener() {
             private int[] lastPositions;
 
@@ -284,9 +284,6 @@ public class UltimateRecyclerView extends FrameLayout {
             }
         };
         mRecyclerView.setOnScrollListener(mOnScrollListener);
-        if (mAdapter != null && mAdapter.getCustomLoadMoreView() == null)
-            mAdapter.setCustomLoadMoreView(LayoutInflater.from(getContext())
-                    .inflate(R.layout.bottom_progressbar, null));
     }
 
     public void disableLoadmore() {
@@ -566,6 +563,10 @@ public class UltimateRecyclerView extends FrameLayout {
 //            mAdapter.getCustomHeaderView().setVisibility(View.GONE);
 //            mAdapter.getCustomLoadMoreView().setVisibility(View.GONE);
 //        }
+
+        if (adapter != null && adapter.getCustomLoadMoreView() == null)
+            adapter.setCustomLoadMoreView(LayoutInflater.from(getContext())
+                    .inflate(R.layout.bottom_progressbar, null));
     }
 
     /**
