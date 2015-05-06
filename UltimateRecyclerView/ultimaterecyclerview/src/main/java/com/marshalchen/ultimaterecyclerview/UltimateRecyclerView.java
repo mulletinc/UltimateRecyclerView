@@ -76,7 +76,7 @@ public class UltimateRecyclerView extends FrameLayout {
     protected View mFloatingButtonView;
     protected int mFloatingButtonId;
 
-    public int showLoadMoreItemNum = 3;
+    public int showLoadMoreItemNum = -1;
 
     VerticalSwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -288,8 +288,10 @@ public class UltimateRecyclerView extends FrameLayout {
 
     public void disableLoadmore() {
         setDefaultScrollListener();
-        mAdapter.swipeCustomLoadMoreView(LayoutInflater.from(getContext())
-                .inflate(R.layout.empty_progressbar, null));
+        if (mAdapter != null) {
+            mAdapter.swipeCustomLoadMoreView(LayoutInflater.from(getContext())
+                    .inflate(R.layout.empty_progressbar, null));
+        }
     }
 
 
