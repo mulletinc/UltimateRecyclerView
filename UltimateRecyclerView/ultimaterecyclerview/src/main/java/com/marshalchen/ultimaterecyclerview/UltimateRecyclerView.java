@@ -211,7 +211,7 @@ public class UltimateRecyclerView extends FrameLayout {
                 enableShoworHideToolbarAndFloatingButton(recyclerView);
             }
         };
-        mRecyclerView.setOnScrollListener(mOnScrollListener);
+        mRecyclerView.addOnScrollListener(mOnScrollListener);
     }
 
     /**
@@ -283,7 +283,7 @@ public class UltimateRecyclerView extends FrameLayout {
 
             }
         };
-        mRecyclerView.setOnScrollListener(mOnScrollListener);
+        mRecyclerView.addOnScrollListener(mOnScrollListener);
     }
 
     public void disableLoadmore() {
@@ -372,8 +372,8 @@ public class UltimateRecyclerView extends FrameLayout {
         }
     }
 
-    public void setOnScrollListener(RecyclerView.OnScrollListener customOnScrollListener) {
-        mRecyclerView.setOnScrollListener(customOnScrollListener);
+    public void addOnScrollListener(RecyclerView.OnScrollListener customOnScrollListener) {
+        mRecyclerView.addOnScrollListener(customOnScrollListener);
     }
 
     public void addItemDividerDecoration(Context context) {
@@ -645,7 +645,6 @@ public class UltimateRecyclerView extends FrameLayout {
         if (mSwipeRefreshLayout != null)
             mSwipeRefreshLayout.setEnabled(isSwipeRefresh);
     }
-
 
     public interface OnLoadMoreListener {
 
